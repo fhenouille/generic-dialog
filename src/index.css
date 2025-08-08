@@ -38,6 +38,12 @@
   flex-shrink: 0;
 }
 
+.dialog-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .dialog-body {
   padding: 1rem;
   overflow-y: auto;
