@@ -1,55 +1,64 @@
-import { useState, type FunctionComponent } from "react";
-import GenericDialog from "./components/genericDialog";
+import { useRef, type FunctionComponent } from "react";
+import {
+  GenericDialog,
+  type GenericDialogHandle,
+} from "./components/genericDialog";
 
 const App: FunctionComponent = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isRegularOpen, setIsRegularOpen] = useState(false);
+  const modalRef = useRef<GenericDialogHandle>(null);
+  const regularRef = useRef<GenericDialogHandle>(null);
 
   return (
     <>
       <h1>Generic Dialog Demo</h1>
       <button
         onClick={() => {
-          setIsRegularOpen(false);
-          setIsModalOpen(true);
+          regularRef.current?.close();
+          modalRef.current?.open();
         }}
       >
         Open Modal Dialog
       </button>
-      <button
-        onClick={() => {
-          setIsModalOpen(false);
-          setIsRegularOpen(true);
-        }}
-      >
+      <button onClick={() => regularRef.current?.open()}>
         Open Regular Dialog
       </button>
-      {isModalOpen && (
-        <GenericDialog setIsOpen={setIsModalOpen}>
-          <div>
+      <GenericDialog
+        ref={modalRef}
+        header={
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
             <h2>Modal Dialog</h2>
-            <p>
-              The component can be used as a modal
-              <br />
-              (the user has to close it before being able
-              <br />
-              to interact with the rest of the webpage).
-            </p>
+            <button onClick={() => modalRef.current?.close()}>✖</button>
           </div>
-        </GenericDialog>
-      )}
-      {isRegularOpen && (
-        <GenericDialog isModal={false} setIsOpen={setIsRegularOpen}>
-          <div>
+        }
+        body={
+          <p>
+            The component can be used as a modal
+            <br />
+            (the user has to close it before being able
+            <br />
+            to interact with the rest of the webpage).
+          </p>
+        }
+        footer={<span>Modal Footer</span>}
+      />
+      <GenericDialog
+        ref={regularRef}
+        isModal={false}
+        header={
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
             <h2>Regular Dialog</h2>
-            <p>
-              The component can be used as a regular dialog
-              <br />
-              (the user can still interact with the rest of the page)
-            </p>
+            <button onClick={() => regularRef.current?.close()}>✖</button>
           </div>
-        </GenericDialog>
-      )}
+        }
+        body={
+          <p>
+            The component can be used as a regular dialog
+            <br />
+            (the user can still interact with the rest of the page)
+          </p>
+        }
+        footer={<span>Non-Modal Footer</span>}
+      />
     </>
   );
 };
