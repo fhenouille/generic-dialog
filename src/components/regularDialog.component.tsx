@@ -14,7 +14,9 @@ export const RegularDialog: FunctionComponent<{
       header={
         <div className="dialog-header-flex">
           <h2>Regular Dialog</h2>
-          <button onClick={() => regularRef.current?.close()}>✖</button>
+          <button type="button" onClick={() => regularRef.current?.close()}>
+            ✖
+          </button>
         </div>
       }
       body={

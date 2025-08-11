@@ -1,6 +1,9 @@
 import type { FunctionComponent } from "react";
 import React, { useState } from "react";
-import { GenericDialog, type GenericDialogHandle } from "./genericDialog.component";
+import {
+  GenericDialog,
+  type GenericDialogHandle,
+} from "./genericDialog.component";
 
 const images: string[] = [
   "/earth.jpg",
@@ -21,7 +24,9 @@ export const ImageDialog: FunctionComponent<{
       header={
         <div className="dialog-header-flex">
           <h3>Gallery</h3>
-          <button onClick={() => imageRef.current?.close()}>✖</button>
+          <button type="button" onClick={() => imageRef.current?.close()}>
+            ✖
+          </button>
         </div>
       }
       body={
@@ -59,7 +64,9 @@ export const ImageDialog: FunctionComponent<{
                     ? "2px solid blue"
                     : "2px solid transparent",
               }}
-              onClick={() => setSelectedImage(img)}
+              onClick={() => {
+                setSelectedImage(img);
+              }}
             />
           ))}
         </div>

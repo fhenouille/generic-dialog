@@ -13,7 +13,9 @@ export const ModalDialog: FunctionComponent<{
       header={
         <div className="dialog-header-flex">
           <h2>Modal Dialog</h2>
-          <button onClick={() => modalRef.current?.close()}>✖</button>
+          <button type="button" onClick={() => modalRef.current?.close()}>
+            ✖
+          </button>
         </div>
       }
       body={

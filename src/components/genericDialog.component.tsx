@@ -27,8 +27,12 @@ export const GenericDialog: FunctionComponent<GenericDialogProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   useImperativeHandle(ref, () => ({
-    open: () => setIsOpen(true),
-    close: () => setIsOpen(false),
+    open: () => {
+      setIsOpen(true);
+    },
+    close: () => {
+      setIsOpen(false);
+    },
   }));
 
   if (!isOpen) return <></>;

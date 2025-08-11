@@ -25,16 +25,40 @@ const App: FunctionComponent = () => {
   return (
     <>
       <h1>Generic Dialog Demo</h1>
-      <button onClick={() => openDialog(modalRef)}>Open Modal Dialog</button>
-      <button onClick={() => openDialog(regularRef)}>
+      <button
+        type="button"
+        onClick={() => {
+          openDialog(modalRef);
+        }}
+      >
+        Open Modal Dialog
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          openDialog(regularRef);
+        }}
+      >
         Open Regular Dialog
       </button>
       <br />
-      <button onClick={() => openDialog(confirmRef)}>
+      <button
+        type="button"
+        onClick={() => {
+          openDialog(confirmRef);
+        }}
+      >
         Remove Confirmation Dialog
       </button>
       <br />
-      <button onClick={() => openDialog(imageRef)}>Open Image Viewer</button>
+      <button
+        type="button"
+        onClick={() => {
+          openDialog(imageRef);
+        }}
+      >
+        Open Image Viewer
+      </button>
 
       <ModalDialog modalRef={modalRef} />
       <RegularDialog regularRef={regularRef} />

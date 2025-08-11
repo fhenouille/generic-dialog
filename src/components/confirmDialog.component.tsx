@@ -17,8 +17,14 @@ export const ConfirmDialog: FunctionComponent<{
             Are you sure you want to delete this item? This action cannot be
             undone.
           </p>
-          <button onClick={() => confirmRef.current?.close()}>Cancel</button>
-          <button onClick={() => confirmRef.current?.close()} color="error">
+          <button type="button" onClick={() => confirmRef.current?.close()}>
+            Cancel
+          </button>
+          <button
+            type="button"
+            onClick={() => confirmRef.current?.close()}
+            color="error"
+          >
             Delete
           </button>
         </>
