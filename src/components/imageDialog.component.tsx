@@ -6,10 +6,10 @@ import {
 } from "./genericDialog.component";
 
 const images: string[] = [
-  "/earth.jpg",
-  "/jupiter.jpg",
-  "/mars.jpg",
-  "/uranus.png",
+  "./earth.jpg",
+  "./jupiter.jpg",
+  "./mars.jpg",
+  "./uranus.png",
 ];
 
 export const ImageDialog: FunctionComponent<{
